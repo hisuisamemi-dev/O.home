@@ -8,12 +8,12 @@
 :root {
   /* 입체 테두리 색 — 밝은 면 / 어두운 면 */
   --r-hi: #ffffff;
-  --r-lo: rgba(96, 72, 140, 0.55);
-  --r-lo2: rgba(96, 72, 140, 0.22);
+  --r-lo: rgba(10, 70, 196, 0.75);
+  --r-lo2: rgba(10, 70, 196, 0.25);
 
-  /* 타이틀바 그라데이션 (포인트 컬러 → 하늘색) */
-  --r-title-a: var(--accent);
-  --r-title-b: #b8dcff;
+  /* 타이틀바 그라데이션 */
+  --r-title-a: #0d55d6;
+  --r-title-b: #6aaeff;
   --r-title-fg: #ffffff;
 
   /* 픽셀 폰트 — 환경설정에서 갈무리를 업로드했다면 그 이름으로 */
@@ -76,9 +76,9 @@
   line-height: 12px;
   text-align: center;
   font-size: 12px;
-  color: #6b5a8a;
+  color: #ffffff;
   text-shadow: none;
-  background: #f4efff;
+  background: #e2492a;
   box-shadow:
     inset -1px -1px 0 var(--r-lo),
     inset 1px 1px 0 var(--r-hi);
