@@ -137,3 +137,33 @@
     inset 1px 1px 0 var(--r-hi),
     inset -2px -2px 0 var(--r-lo2);
 }
+
+
+/* ---------- 회원정보창(MEMBER)도 창 모양으로 ---------- */
+.login-box h3 {
+  display: flex;
+  align-items: center;
+  margin: -16px -16px 12px !important;
+  padding: 5px 8px 5px 10px;
+  background: linear-gradient(90deg, var(--r-title-a), var(--r-title-b));
+  color: var(--r-title-fg) !important;
+  font-family: var(--r-font);
+  font-size: calc(11.5px * var(--fs, 1));
+  letter-spacing: 0.08em;
+  text-shadow: 1px 1px 0 var(--r-lo);
+}
+.login-box h3::after {
+  content: '✕';
+  margin-left: auto;
+  width: 17px;
+  height: 16px;
+  line-height: 15px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: none;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #f9a98f, #e2492a 45%, #b8300f 55%, #e2492a);
+}
