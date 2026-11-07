@@ -954,7 +954,7 @@ html,
 :root {
   --win-width: 1280px;           /* 창 너비 (1220px보다 작으면 메인이 가로로 스크롤돼요) */
   --win-gap: 26px;               /* 화면 가장자리와 창 사이 여백 */
-  --win-inside: #e2e3e6;         /* 창 안쪽 바탕색 */
+  --win-inside: #FFFFFF;         /* 창 안쪽 바탕색 */
   --win-status: 'Now Loading...';          /* 아래 상태 표시줄 글자 */
 }
 
