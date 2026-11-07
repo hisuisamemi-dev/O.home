@@ -1213,4 +1213,28 @@ html,
   color: var(--tb-edge) !important;
 }
 
-
+/* 보기 전환 버튼 (갤러리 / 리스트 등) */
+.seg {
+  gap: 2px;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.seg button {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+  font-family: var(--r-font, inherit);
+}
+.seg button:hover {
+  background: #d4d7de !important;
+}
+.seg button.on {
+  font-weight: 700;
+  box-shadow: var(--u-bevel-dn) !important;
+  background: var(--tb-win)
+    conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
+    0 0 / 4px 4px !important;
+}
