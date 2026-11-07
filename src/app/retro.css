@@ -1238,3 +1238,22 @@ html,
     conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
     0 0 / 4px 4px !important;
 }
+
+/* 선택창 펼친 목록 (말머리 · 공개범위 등) = 윈도우 98 목록 */
+.k-sel-pop {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  border: 1px solid #0a0a0a !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+.k-sel-pop div {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  font-family: var(--r-font, inherit);
+}
+.k-sel-pop div:hover,
+.k-sel-pop div.sel {
+  background: var(--tb-navy) !important;
+  color: #fff !important;
+}
