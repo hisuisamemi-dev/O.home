@@ -297,6 +297,8 @@
   border-radius: 0 !important;
 }
 .topbar .user-chip:hover {
+   background: #d4d7de !important;
+   }
 
 /* =========================================================
    BGM 플레이어 = 윈도우 98 미니 플레이어
@@ -547,8 +549,5 @@ html,
   box-shadow:
     inset 1px 1px 0 var(--w-edge),
     inset -1px -1px 0 var(--w-edge);
-}
-
-  background: #d4d7de !important;
 }
 
