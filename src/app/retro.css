@@ -176,7 +176,7 @@
      아래 --tb-… 값을 따릅니다
    ========================================================= */
 :root {
-  --tb-title:   /* 제목줄 글자 — 작은따옴표 안만 바꾸세요 */
+  --tb-title: 'samemi.exe';  /* 제목줄 글자 — 작은따옴표 안만 바꾸세요 */
   --tb-navy: #0d2a8a;         /* 제목줄 왼쪽 */
   --tb-blue: #3a78e8;         /* 제목줄 오른쪽 */
   --tb-win: #c3c7cf;          /* 메뉴 줄 회색 */
@@ -297,6 +297,258 @@
   border-radius: 0 !important;
 }
 .topbar .user-chip:hover {
+
+/* =========================================================
+   BGM 플레이어 = 윈도우 98 미니 플레이어
+   스크롤바 = 윈도우 98 스크롤바
+   - 색은 아래 --w-… 값만 바꾸면 됩니다
+   - 이 블록을 쓰면 환경설정의 「BGM 플레이어」「스크롤바」 색은 무시됩니다
+   ========================================================= */
+:root {
+  --w-bar-title: '♪ Now Playing';  /* 플레이어 제목줄 글자 */
+  --w-navy: #0d2a8a;     /* 제목줄 왼쪽 / 강조 */
+  --w-blue: #3a78e8;     /* 제목줄 오른쪽 */
+  --w-win: #c3c7cf;      /* 회색 바탕 */
+  --w-edge: #4d5666;     /* 어두운 테두리 */
+  --w-ink: #20242e;      /* 글씨 */
+  --w-lcd: #10162a;      /* 곡 제목 화면 바탕 */
+  --w-lcd-fg: #7ff0c8;   /* 곡 제목 글씨 */
+}
+
+/* ---------- 플레이어 본체 ---------- */
+.bgm {
+  border-radius: 0 !important;
+  padding: 26px 8px 7px 8px !important;
+  gap: 8px !important;
+  background: var(--w-win) !important;
+  backdrop-filter: none !important;
+  color: var(--w-ink) !important;
+  border: 2px solid !important;
+  border-color: #fff var(--w-edge) var(--w-edge) #fff !important;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25) !important;
+  font-family: var(--r-font, monospace);
+}
+/* 제목줄 */
+.bgm::before {
+  content: var(--w-bar-title);
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+  height: 18px;
+  padding: 0 6px;
+  line-height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, var(--w-navy), var(--w-blue));
+  pointer-events: none;
+}
+
+/* CD → 들어간 칸 안의 CD */
+.bgm .disc {
+  box-shadow: 0 0 0 2px var(--w-win), 0 0 0 4px var(--w-edge);
+}
+
+/* 곡 제목 = 검은 액정 화면 */
+.bgm .title {
+  opacity: 1 !important;
+  padding: 3px 8px;
+  min-width: 110px;
+  background: var(--w-lcd);
+  border: 2px solid;
+  border-color: var(--w-edge) #fff #fff var(--w-edge);
+}
+.bgm .title,
+.bgm .title .tt,
+.bgm .title .mq {
+  color: var(--w-lcd-fg) !important;
+  font-family: var(--r-font, monospace);
+}
+.bgm .title .mq:not(.tt) {
+  opacity: 0.7;
+}
+
+/* 버튼 = 네모난 회색 버튼 */
+.bgm .ctrl {
+  gap: 3px !important;
+}
+.bgm .ctrl button,
+.bgm .fold-btn {
+  width: 26px !important;
+  height: 24px !important;
+  border-radius: 0 !important;
+  color: var(--w-ink) !important;
+  background: var(--w-win) !important;
+  border: 2px solid;
+  border-color: #fff var(--w-edge) var(--w-edge) #fff;
+}
+.bgm .fold-btn {
+  width: 20px !important;
+}
+.bgm .ctrl button:hover,
+.bgm .fold-btn:hover {
+  background: #d4d7de !important;
+}
+.bgm .ctrl button:active,
+.bgm .fold-btn:active {
+  border-color: var(--w-edge) #fff #fff var(--w-edge);
+}
+
+/* 볼륨 = 홈이 파인 레일 + 네모 손잡이 */
+.bgm .vol {
+  height: 4px !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  border: 1px solid;
+  border-color: var(--w-edge) #fff #fff var(--w-edge);
+}
+.bgm .vol i {
+  border-radius: 0 !important;
+  background: var(--w-navy) !important;
+}
+.bgm .vol i::after {
+  right: -5px !important;
+  top: -8px !important;
+  width: 10px !important;
+  height: 18px !important;
+  border-radius: 0 !important;
+  background: var(--w-win) !important;
+  box-shadow: none !important;
+  border: 2px solid;
+  border-color: #fff var(--w-edge) var(--w-edge) #fff;
+  box-sizing: border-box;
+}
+
+/* 곡 목록 팝업 = 윈도우 메뉴 */
+.bgm-list {
+  border-radius: 0 !important;
+  padding: 2px !important;
+  background: var(--w-win) !important;
+  border: 2px solid !important;
+  border-color: #fff var(--w-edge) var(--w-edge) #fff !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25) !important;
+}
+.bgm-list .h {
+  margin: 0 0 2px;
+  padding: 3px 6px !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--w-navy), var(--w-blue));
+}
+.bgm-list .it {
+  border-radius: 0 !important;
+}
+.bgm-list .it b,
+.bgm-list .it small {
+  color: var(--w-ink) !important;
+}
+.bgm-list .it:hover,
+.bgm-list .it.on {
+  background: var(--w-navy) !important;
+}
+.bgm-list .it:hover b,
+.bgm-list .it:hover small,
+.bgm-list .it.on b,
+.bgm-list .it.on small {
+  color: #fff !important;
+}
+
+/* 접힌 상태(CD만) — 제목줄 없이 작은 네모 */
+.bgm.folded {
+  padding: 6px !important;
+}
+.bgm.folded::before {
+  display: none;
+}
+
+/* 모바일 — 화면 아래 가로 막대라 제목줄은 숨김 */
+@media (max-width: 620px) {
+  .bgm,
+  .bgm.bgm-left {
+    padding: 5px 10px !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+  .bgm::before {
+    display: none;
+  }
+}
+
+/* ---------- 스크롤바 = 윈도우 98 ----------
+   홈 기본 CSS의 「얇은 스크롤바」 설정이 남아 있으면 크롬이 아래 모양을
+   무시하므로, 첫 규칙에서 그 설정을 먼저 풀어 줍니다 */
+html,
+#appMain,
+.panel,
+.k-textarea,
+.mng-box,
+.qa-answers {
+  scrollbar-width: auto !important;
+  scrollbar-color: auto !important;
+}
+::-webkit-scrollbar,
+.panel ::-webkit-scrollbar,
+.k-textarea::-webkit-scrollbar,
+.mng-box ::-webkit-scrollbar {
+  width: 16px !important;
+  height: 16px !important;
+}
+::-webkit-scrollbar-track,
+.panel ::-webkit-scrollbar-track,
+.k-textarea::-webkit-scrollbar-track,
+.mng-box ::-webkit-scrollbar-track {
+  background: var(--w-win)
+    conic-gradient(#fff 25%, var(--w-win) 0 50%, #fff 0 75%, var(--w-win) 0)
+    0 0 / 2px 2px !important;
+}
+::-webkit-scrollbar-thumb,
+.panel ::-webkit-scrollbar-thumb,
+.k-textarea::-webkit-scrollbar-thumb,
+.mng-box ::-webkit-scrollbar-thumb {
+  background: var(--w-win) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow:
+    inset -1px -1px 0 #0a0a0a,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 var(--w-edge),
+    inset 2px 2px 0 #e4e6ea !important;
+}
+::-webkit-scrollbar-corner {
+  background: var(--w-win);
+}
+/* 위·아래 화살표 버튼 */
+::-webkit-scrollbar-button:single-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--w-win);
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow:
+    inset -1px -1px 0 #0a0a0a,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 var(--w-edge);
+}
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4' shape-rendering='crispEdges'%3E%3Cpolygon points='3.5,0 7,4 0,4'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4' shape-rendering='crispEdges'%3E%3Cpolygon points='0,0 7,0 3.5,4'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='7' shape-rendering='crispEdges'%3E%3Cpolygon points='0,3.5 4,0 4,7'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='7' shape-rendering='crispEdges'%3E%3Cpolygon points='0,0 4,3.5 0,7'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar-button:single-button:active {
+  box-shadow:
+    inset 1px 1px 0 var(--w-edge),
+    inset -1px -1px 0 var(--w-edge);
+}
+
   background: #d4d7de !important;
 }
 
