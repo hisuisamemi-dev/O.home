@@ -12,8 +12,8 @@
   --r-lo2: rgba(10, 70, 196, 0.25);
 
   /* 타이틀바 그라데이션 */
-  --r-title-a: #0d55d6;
-  --r-title-b: #6aaeff;
+  --r-title-a: #0d2a8a;
+  --r-title-b: #3a78e8;
   --r-title-fg: #ffffff;
 
   /* 픽셀 폰트 — 환경설정에서 갈무리를 업로드했다면 그 이름으로 */
@@ -549,5 +549,399 @@ html,
   box-shadow:
     inset 1px 1px 0 var(--w-edge),
     inset -1px -1px 0 var(--w-edge);
+}
+
+
+/* =========================================================
+   공통 UI = 윈도우 98 (상단바와 깔맞춤)
+   - 색은 상단바 블록의 --tb-… 값을 그대로 씁니다
+     (상단바 색을 바꾸면 여기도 같이 바뀜)
+   - 이 블록은 반드시 상단바·BGM 블록보다 아래에 두세요
+   ========================================================= */
+:root {
+  --u-bevel-up:
+    inset -1px -1px 0 #0a0a0a,
+    inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 var(--tb-edge),
+    inset 2px 2px 0 #e4e6ea;
+  --u-bevel-dn:
+    inset 1px 1px 0 #0a0a0a,
+    inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 var(--tb-edge),
+    inset -2px -2px 0 #e4e6ea;
+  --u-field:
+    inset 1px 1px 0 var(--tb-edge),
+    inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #0a0a0a,
+    inset -2px -2px 0 #e4e6ea;
+  --u-menu-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- 상단바 오른쪽 ----------
+   알림 종 + 프로필 = 작업 표시줄 알림 영역(트레이)처럼 오목한 칸 */
+.topbar .user-chip {
+  height: 30px;
+  padding: 0 10px 0 4px !important;
+  gap: 6px !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow:
+    inset 1px 1px 0 var(--tb-edge),
+    inset -1px -1px 0 #ffffff !important;
+  font-family: var(--r-font, var(--font-menu));
+}
+.topbar .user-chip:hover {
+  background: #d4d7de !important;
+}
+.topbar .badge-dot {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+}
+.topbar .badge-dot:hover {
+  box-shadow: var(--u-bevel-up);
+}
+.topbar .badge-dot svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.8;
+}
+/* 프로필 사진 = 네모 액자 */
+.topbar .user-chip .avatar {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: var(--u-field);
+}
+/* 안 읽은 알림 숫자 = 빨간 네모 딱지 */
+.topbar .badge-dot[data-n]:not([data-n="0"])::after {
+  border-radius: 0 !important;
+  background: #d8261c !important;
+  border: 1px solid #fff;
+  top: -3px !important;
+  right: -5px !important;
+}
+/* 로그아웃 상태의 로그인 버튼 */
+.topbar .login-link {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 14px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+  font-family: var(--r-font, var(--font-menu));
+}
+.topbar .login-link:active {
+  box-shadow: var(--u-bevel-dn) !important;
+}
+
+/* 프로필 메뉴 · 알림 목록 = 윈도우 메뉴 */
+.user-menu {
+  top: calc(100% + 4px) !important;
+  border-radius: 0 !important;
+  padding: 2px !important;
+  background: var(--tb-win) !important;
+  border: none !important;
+  box-shadow: var(--u-bevel-up), var(--u-menu-shadow) !important;
+}
+.user-menu button,
+.user-menu .nh b,
+.user-menu .nset .row,
+.user-menu .empty {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  font-family: var(--r-font, var(--font-dropdown));
+}
+.user-menu button:hover {
+  background: var(--tb-navy) !important;
+  color: #fff !important;
+}
+.user-menu .nh {
+  border-bottom: 1px solid var(--tb-edge) !important;
+  box-shadow: 0 1px 0 #fff;
+}
+
+/* 편집모드 표시 */
+.topbar .edit-flag {
+  border-radius: 0 !important;
+  color: #fff !important;
+  background: #d8261c;
+  border: 1px solid #fff !important;
+}
+.topbar .k-toggle.grid-chip {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+}
+
+/* ---------- 버튼 ---------- */
+.btn {
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+  font-family: var(--r-font, inherit);
+}
+.btn:hover {
+  background: #d4d7de !important;
+}
+.btn:active {
+  transform: none !important;
+  box-shadow: var(--u-bevel-dn) !important;
+}
+/* 진한 버튼(등록·저장·WRITE) = 남색 강조 버튼 */
+.btn-dark {
+  color: #fff !important;
+  background: linear-gradient(180deg, var(--tb-blue), var(--tb-navy)) !important;
+}
+.btn-dark:hover {
+  background: var(--tb-navy) !important;
+}
+
+/* ---------- 입력칸 · 선택창 ---------- */
+.k-input,
+.k-textarea,
+.k-select .cur {
+  border: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: var(--u-field) !important;
+}
+/* 선택창 오른쪽 ▼ 버튼 */
+.k-select .cur::after {
+  right: 2px !important;
+  top: 2px !important;
+  width: 18px !important;
+  height: calc(100% - 4px) !important;
+  border: none !important;
+  transform: none !important;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4' shape-rendering='crispEdges'%3E%3Cpolygon points='0,0 7,0 3.5,4'/%3E%3C/svg%3E")
+    center no-repeat,
+    var(--tb-win);
+  box-shadow: var(--u-bevel-up);
+}
+.k-select .opts {
+  top: calc(100% + 1px) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: #fff !important;
+  border: 1px solid #0a0a0a;
+  box-shadow: var(--u-menu-shadow) !important;
+}
+.k-select .opts div {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+}
+.k-select .opts div:hover,
+.k-select .opts div.sel {
+  background: var(--tb-navy) !important;
+  color: #fff !important;
+}
+
+/* 체크박스 = 하얀 네모 칸 */
+.k-check .box {
+  border: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: var(--u-field);
+}
+.k-check input:checked + .box {
+  background: #fff !important;
+}
+.k-check input:checked + .box::after {
+  border-color: var(--tb-ink) !important;
+}
+
+/* 켜기/끄기 스위치 = 네모 레일 */
+.k-toggle .tr {
+  border-radius: 0 !important;
+  box-shadow: var(--u-field);
+}
+.k-toggle .tr::after {
+  border-radius: 0 !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+}
+.k-toggle input:checked + .tr {
+  background: var(--tb-navy) !important;
+}
+
+/* ---------- 탭 (전체 · 공지 · 말머리 / 보기 전환) ---------- */
+.mini-seg {
+  gap: 2px;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.mini-seg button {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+  font-family: var(--r-font, inherit);
+}
+.mini-seg button.on {
+  font-weight: 700;
+  box-shadow: var(--u-bevel-dn) !important;
+  background: var(--tb-win)
+    conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
+    0 0 / 4px 4px !important;
+}
+
+/* 작은 꼬리표 */
+.pill {
+  border-radius: 0 !important;
+}
+
+/* ---------- 팝업 창(모달) = 윈도우 대화상자 ---------- */
+.modal-ov {
+  background: rgba(0, 20, 80, 0.35) !important;
+  backdrop-filter: none !important;
+}
+.mng-box {
+  border-radius: 0 !important;
+  padding: 0 18px 18px !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up), 4px 4px 0 rgba(0, 0, 0, 0.3) !important;
+}
+.mng-box > h3 {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0 -16px 10px !important;
+  padding: 4px 8px;
+  color: #fff !important;
+  font-size: calc(12.5px * var(--fs, 1)) !important;
+  background: linear-gradient(90deg, var(--tb-navy), var(--tb-blue));
+  font-family: var(--r-font, inherit);
+}
+.mng-box > h3:first-child {
+  margin-top: 2px !important;
+}
+.mng-box .d {
+  color: var(--tb-ink) !important;
+}
+
+/* ---------- 알림 토스트 · 말풍선 도움말 ---------- */
+.toast {
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  backdrop-filter: none !important;
+  box-shadow: var(--u-bevel-up), var(--u-menu-shadow) !important;
+  font-family: var(--r-font, inherit);
+}
+/* 마우스를 올리면 뜨는 설명 = 노란 쪽지 */
+.tip-pop,
+.tip-pop.dd {
+  border-radius: 0 !important;
+  color: #000 !important;
+  background: #ffffe1 !important;
+  border: 1px solid #000 !important;
+  box-shadow: none !important;
+}
+
+/* ---------- 편집모드 우클릭 메뉴 ---------- */
+.ctx-menu {
+  border-radius: 0 !important;
+  padding: 2px !important;
+  background: var(--tb-win) !important;
+  border: none !important;
+  box-shadow: var(--u-bevel-up), var(--u-menu-shadow) !important;
+}
+.ctx-menu button,
+.ctx-menu .ctx-ttl,
+.ctx-menu .ord-hint {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+}
+.ctx-menu button:hover,
+.ctx-menu button.danger:hover {
+  background: var(--tb-navy) !important;
+  color: #fff !important;
+}
+.ctx-menu .sep {
+  background: var(--tb-edge) !important;
+  box-shadow: 0 1px 0 #fff;
+}
+.ctx-menu .ord-input {
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: #fff !important;
+  box-shadow: var(--u-field);
+}
+
+
+/* =========================================================
+   메인 위젯(MEMO · LATEST · MEMBER 등) = 회색 윈도우 98 창
+   - 상단바와 같은 색(--tb-…)을 씁니다
+   - 반드시 공통 UI 블록보다 아래에 두세요
+   ========================================================= */
+
+/* 창 본체 = 회색 입체 창 */
+.widget,
+.login-box {
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: var(--u-bevel-up), 3px 3px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 제목줄 = 상단바와 같은 남색 그라데이션 */
+.widget h4,
+.login-box h3 {
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--tb-navy), var(--tb-blue)) !important;
+  text-shadow: none !important;
+  letter-spacing: 0.06em;
+}
+.widget h4 .more {
+  color: #fff !important;
+}
+/* 회색 바탕에서 흐린 글씨가 안 보이지 않게 */
+.login-box small {
+  color: var(--tb-edge) !important;
+}
+
+/* X 버튼 = 회색 네모 버튼 + 검은 × */
+.widget h4::after,
+.login-box h3::after {
+  content: '×' !important;
+  width: 16px !important;
+  height: 14px !important;
+  line-height: 12px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  text-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+}
+
+/* 메모 글 = 오목한 흰 칸 */
+.widget > h4 + p[style*="pre-line"] {
+  padding: 8px 10px;
+  background: #fff;
+  box-shadow: var(--u-field);
+}
+
+/* LATEST 썸네일 = 오목한 네모 액자 */
+.latest-grid > div {
+  border-radius: 0 !important;
+  padding: 2px;
+  background: #fff;
+  box-shadow: var(--u-field);
 }
 
