@@ -167,3 +167,136 @@
   border-radius: 2px;
   background: linear-gradient(180deg, #f9a98f, #e2492a 45%, #b8300f 55%, #e2492a);
 }
+
+
+/* =========================================================
+   상단바 = 윈도우 98 창 (제목줄 + 회색 메뉴 버튼)
+   - 높이는 원래대로 58px — 위 20px가 파란 제목줄, 아래가 메뉴 줄
+   - 이 블록을 쓰면 환경설정의 「상단메뉴 배경·글씨」 색은 무시되고
+     아래 --tb-… 값을 따릅니다
+   ========================================================= */
+:root {
+  --tb-title:   /* 제목줄 글자 — 작은따옴표 안만 바꾸세요 */
+  --tb-navy: #0d2a8a;         /* 제목줄 왼쪽 */
+  --tb-blue: #3a78e8;         /* 제목줄 오른쪽 */
+  --tb-win: #c3c7cf;          /* 메뉴 줄 회색 */
+  --tb-edge: #4d5666;         /* 어두운 테두리 */
+  --tb-ink: #20242e;          /* 메뉴 글씨 */
+}
+
+.topbar {
+  padding-top: 20px !important;
+  background: var(--tb-win) !important;
+  backdrop-filter: none !important;
+  color: var(--tb-ink) !important;
+  border-bottom: 2px solid var(--tb-edge) !important;
+  box-shadow: inset 0 -1px 0 #fff, 0 2px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 파란 제목줄 */
+.topbar::before {
+  content: var(--tb-title);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 20px;
+  padding: 0 70px 0 8px;
+  line-height: 20px;
+  font-family: var(--r-font, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: linear-gradient(90deg, var(--tb-navy), var(--tb-blue));
+  pointer-events: none;
+}
+
+/* 제목줄 오른쪽 _ □ × (장식) */
+.topbar::after {
+  content: '_ \00a0□\00a0 ×';
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  height: 14px;
+  padding: 0 3px;
+  line-height: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  word-spacing: 1px;
+  color: #000;
+  background:
+    linear-gradient(90deg,
+      var(--tb-win) 0 30%, transparent 30% 35%,
+      var(--tb-win) 35% 65%, transparent 65% 70%,
+      var(--tb-win) 70%);
+  pointer-events: none;
+}
+
+/* 메뉴 버튼 = 튀어나온 회색 버튼 */
+.topbar .gnb {
+  gap: 3px !important;
+}
+.topbar .gnb > button,
+.topbar .gnb > .grp > button,
+.topbar .gnb a.gnb-link {
+  padding: 4px 12px !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  border: 2px solid !important;
+  border-color: #fff var(--tb-edge) var(--tb-edge) #fff !important;
+  font-family: var(--r-font, var(--font-menu));
+}
+.topbar .gnb > button:hover,
+.topbar .gnb > .grp > button:hover,
+.topbar .gnb a.gnb-link:hover {
+  background: #d4d7de !important;
+}
+/* 지금 보고 있는 메뉴 = 눌린 버튼 + 체크무늬 */
+.topbar .gnb > button.on,
+.topbar .gnb > .grp > button.on,
+.topbar .gnb a.gnb-link.on,
+.topbar .gnb > button:active,
+.topbar .gnb > .grp > button:active {
+  border-color: var(--tb-edge) #fff #fff var(--tb-edge) !important;
+  background: var(--tb-win)
+    conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
+    0 0 / 4px 4px !important;
+  font-weight: 700;
+}
+.topbar .grp > button::after {
+  color: var(--tb-ink) !important;
+}
+
+/* 드롭다운 = 윈도우 메뉴 */
+.topbar .grp .sub {
+  top: calc(100% + 2px) !important;
+  border-radius: 0 !important;
+  padding: 2px !important;
+  background: var(--tb-win) !important;
+  border: 2px solid !important;
+  border-color: #fff var(--tb-edge) var(--tb-edge) #fff !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25) !important;
+}
+.topbar .grp .sub button,
+.topbar .grp .sub a {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  font-family: var(--r-font, var(--font-dropdown));
+}
+.topbar .grp .sub button:hover,
+.topbar .grp .sub a:hover {
+  background: var(--tb-navy) !important;
+  color: #fff !important;
+}
+
+/* 오른쪽 알림·프로필도 회색 바탕에 맞게 */
+.topbar .user-chip {
+  color: var(--tb-ink) !important;
+  border-radius: 0 !important;
+}
+.topbar .user-chip:hover {
+  background: #d4d7de !important;
+}
+
