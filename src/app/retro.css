@@ -1013,3 +1013,204 @@ html,
   }
 }
 
+/* =========================================================
+   메뉴 안쪽 페이지 (게시판 · 캐릭터 · 다이어리 · 달력 등)
+   - 상단바 색(--tb-…)을 그대로 씁니다
+   - 공통 UI · 위젯 블록보다 아래에 두세요
+   ========================================================= */
+
+/* ---------- 페이지 제목 (Characters · Diary 등) ---------- */
+.page-head h1 {
+  color: var(--tb-navy) !important;
+  text-shadow: 2px 2px 0 #fff;
+}
+.page-head p {
+  color: var(--tb-edge) !important;
+}
+
+/* ---------- 내용 칸 = 회색 창 ---------- */
+.panel:not(.widget):not(.login-box) {
+  border-radius: 0 !important;
+  color: var(--tb-ink);
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up), 3px 3px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ---------- 검색창 = 오목한 흰 칸 + 돋보기 버튼 ---------- */
+.searchbar {
+  height: 32px !important;
+  padding: 2px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: var(--u-field) !important;
+}
+.searchbar.open {
+  padding-left: 10px !important;
+}
+.searchbar input {
+  color: var(--tb-ink) !important;
+  font-family: var(--r-font, inherit);
+}
+.searchbar input::placeholder {
+  color: var(--tb-edge) !important;
+}
+.searchbar button {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up);
+}
+.searchbar button:active {
+  box-shadow: var(--u-bevel-dn);
+}
+
+/* ---------- 분류 버튼 (전체 0 · 기분 · 달 필터) ---------- */
+.tag-row .tag {
+  border-radius: 0 !important;
+  padding: 6px 12px !important;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+  transform: none !important;
+  font-family: var(--r-font, inherit);
+}
+.tag-row .tag small {
+  color: var(--tb-edge) !important;
+}
+.tag-row .tag.on {
+  font-weight: 700;
+  box-shadow: var(--u-bevel-dn) !important;
+  background: var(--tb-win)
+    conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
+    0 0 / 4px 4px !important;
+}
+.tag-row .tag.on small {
+  color: var(--tb-ink) !important;
+  opacity: 1 !important;
+}
+
+/* ---------- 작은 달력 (다이어리 옆 · 날짜 고르기 팝업) ---------- */
+.dy-cal,
+.k-cal {
+  border: none !important;
+  border-radius: 0 !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up), 3px 3px 0 rgba(0, 0, 0, 0.25) !important;
+}
+/* 년·월 줄 = 남색 제목줄 */
+.dy-cal .hd,
+.k-cal .hd {
+  margin: -10px -10px 8px !important;
+  padding: 3px 4px;
+  background: linear-gradient(90deg, var(--tb-navy), var(--tb-blue));
+}
+.dy-cal .hd {
+  margin: -14px -14px 8px !important;
+}
+.dy-cal .hd b,
+.k-cal .hd b {
+  color: #fff !important;
+  font-family: var(--r-font, inherit);
+}
+/* ‹ › = 회색 네모 버튼 */
+.dy-cal .hd button,
+.k-cal .hd button {
+  width: 20px !important;
+  height: 18px !important;
+  line-height: 14px;
+  border-radius: 0 !important;
+  color: #000 !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up);
+}
+.dy-cal .hd button:active,
+.k-cal .hd button:active {
+  box-shadow: var(--u-bevel-dn);
+}
+/* 요일 + 날짜 = 오목한 흰 칸 안에 */
+.dy-cal .wk,
+.k-cal .wk {
+  margin-bottom: 0 !important;
+  padding: 4px 4px 0;
+  background: #fff;
+  box-shadow:
+    inset 1px 1px 0 var(--tb-edge),
+    inset 2px 2px 0 #0a0a0a,
+    inset -1px 0 0 #fff;
+}
+.dy-cal .wk span,
+.k-cal .wk span {
+  color: var(--tb-navy) !important;
+  font-weight: 700;
+}
+.dy-cal .days,
+.k-cal .days {
+  padding: 2px 4px 4px;
+  background: #fff;
+  box-shadow:
+    inset 1px 0 0 var(--tb-edge),
+    inset 2px 0 0 #0a0a0a,
+    inset -1px -1px 0 #fff,
+    inset -2px -2px 0 #e4e6ea;
+}
+.dy-cal .days button,
+.k-cal .days button {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+}
+/* 글 있는 날 · 마우스 올린 날 · 오늘 = 남색 칸 */
+.dy-cal .days button.has {
+  outline: 1px dotted var(--tb-navy);
+  outline-offset: -2px;
+}
+.dy-cal .days button.has:hover,
+.k-cal .days button:hover {
+  color: #fff !important;
+  background: var(--tb-navy) !important;
+}
+.k-cal .days button.today {
+  box-shadow: inset 0 0 0 1px var(--tb-navy) !important;
+}
+.dy-cal .dots i {
+  border-radius: 0 !important;
+}
+
+/* ---------- 큰 달력 페이지 ---------- */
+.cal-head b {
+  color: var(--tb-navy);
+  font-family: var(--r-font, var(--serif));
+}
+.cal-grid .dow {
+  color: var(--tb-navy) !important;
+  font-weight: 700;
+}
+.cal-cell {
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: #fff !important;
+  box-shadow: var(--u-field) !important;
+}
+.cal-cell:hover {
+  background: #f2f4ff !important;
+}
+.cal-cell.today {
+  box-shadow: var(--u-field), inset 0 0 0 3px var(--tb-navy) !important;
+}
+.cal-cell.picked {
+  box-shadow: var(--u-field), inset 0 0 0 3px var(--tb-blue) !important;
+}
+.cal-cell .ev {
+  border-radius: 0 !important;
+}
+
+/* 회색 칸 위의 흐린 안내 문구가 잘 보이게 */
+.panel .hint,
+.page > .hint {
+  color: var(--tb-edge) !important;
+}
+
+
