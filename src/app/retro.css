@@ -1257,3 +1257,113 @@ html,
   background: var(--tb-navy) !important;
   color: #fff !important;
 }
+
+
+/* =========================================================
+   글쓰기 화면 · 모바일 메뉴 = 윈도우 98
+   (라디오 버튼 · 이미지 올리는 칸 · 글 편집기 · 모바일 메뉴 목록)
+   - 상단바 색(--tb-…)을 그대로 씁니다
+   ========================================================= */
+
+/* ---------- 라디오 버튼 (로그 · 단일 · 단일(세로) 등) ---------- */
+.k-radio .dot {
+  border: none !important;
+  background: #fff !important;
+  box-shadow:
+    inset 1px 1px 0 var(--tb-edge),
+    inset 2px 2px 0 #0a0a0a,
+    inset -1px -1px 0 #fff,
+    inset -2px -2px 0 #e4e6ea;
+}
+.k-radio .dot::after {
+  width: 6px !important;
+  height: 6px !important;
+  background: #0a0a0a !important;
+  transition: none !important;
+}
+
+/* ---------- 이미지 올리는 칸 ---------- */
+.dropzone {
+  border: 1px dotted var(--tb-edge) !important;
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: #fff !important;
+  box-shadow: var(--u-field);
+}
+.dropzone:hover,
+.dropzone.drag {
+  background: #f2f4ff !important;
+  border-color: var(--tb-navy) !important;
+}
+
+/* ---------- 글 편집기 (굵게 · 기울임 · 이미지 넣기 …) ---------- */
+.re-wrap {
+  border: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: var(--u-field) !important;
+}
+.re-wrap:focus-within {
+  box-shadow: var(--u-field) !important;
+}
+/* 도구 줄 = 회색 작업줄 */
+.re-toolbar {
+  margin: 2px 2px 0;
+  padding: 3px 4px !important;
+  gap: 1px !important;
+  border-bottom: 1px solid var(--tb-edge) !important;
+  background: var(--tb-win) !important;
+  box-shadow: 0 1px 0 #fff;
+}
+.re-btn {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  background: transparent !important;
+}
+.re-btn:hover {
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up);
+}
+.re-btn.on {
+  color: var(--tb-ink) !important;
+  box-shadow: var(--u-bevel-dn);
+  background: var(--tb-win)
+    conic-gradient(#fff 25%, var(--tb-win) 0 50%, #fff 0 75%, var(--tb-win) 0)
+    0 0 / 4px 4px !important;
+}
+.re-sep {
+  width: 2px !important;
+  height: 20px !important;
+  background: none !important;
+  border-left: 1px solid var(--tb-edge);
+  border-right: 1px solid #fff;
+}
+
+/* ---------- 모바일 메뉴 목록 ---------- */
+.menu-list a {
+  border-radius: 0 !important;
+  color: var(--tb-ink) !important;
+  font-family: var(--r-font, inherit);
+}
+.menu-list a:hover,
+.menu-list .mgrp.open > a {
+  color: #fff !important;
+  background: var(--tb-navy) !important;
+}
+.menu-list .mgrp > a::after {
+  color: inherit !important;
+}
+/* 하위 메뉴 = └ 표시로 들여쓰기 */
+.menu-list .msub {
+  padding-left: 14px !important;
+}
+.menu-list .msub a {
+  color: var(--tb-ink) !important;
+}
+.menu-list .msub a::before {
+  content: '└ ';
+  color: var(--tb-edge);
+}
+.menu-list .msub a:hover::before {
+  color: #fff;
+}
