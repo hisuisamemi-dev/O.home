@@ -1367,3 +1367,16 @@ html,
 .menu-list .msub a:hover::before {
   color: #fff;
 }
+
+
+/* 모바일 메뉴 — 하위 항목을 누르거나 올렸을 때 흰 글씨 */
+.menu-list .msub a:hover,
+.menu-list .msub a:active,
+.menu-list .msub a:focus {
+  color: #fff !important;
+}
+.menu-list .msub a:hover::before,
+.menu-list .msub a:active::before,
+.menu-list .msub a:focus::before {
+  color: #fff !important;
+}
