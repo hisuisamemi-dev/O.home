@@ -1380,3 +1380,62 @@ html,
 .menu-list .msub a:focus::before {
   color: #fff !important;
 }
+
+/* =========================================================
+   방명록 — 답글 · 삭제 = 작은 회색 버튼, 답글 칸 = 오목한 흰 칸
+   ========================================================= */
+.gb-item .hd small {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--tb-edge) !important;
+}
+.gb-item .hd small > span,
+.gb-item .reply > span {
+  display: inline-block;
+  margin-left: 4px !important;
+  padding: 2px 8px;
+  font-size: 11px !important;
+  line-height: 14px;
+  color: var(--tb-ink) !important;
+  background: var(--tb-win);
+  box-shadow: var(--u-bevel-up);
+  font-family: var(--r-font, inherit);
+}
+.gb-item .hd small > span:hover,
+.gb-item .reply > span:hover {
+  background: #d4d7de;
+}
+.gb-item .hd small > span:active,
+.gb-item .reply > span:active {
+  box-shadow: var(--u-bevel-dn);
+}
+/* 맨 처음 버튼(답글)은 남색 강조 */
+.gb-item .hd small > span:first-child {
+  color: #fff !important;
+  background: linear-gradient(180deg, var(--tb-blue), var(--tb-navy));
+}
+
+/* 답글 칸 */
+.gb-item .reply {
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: var(--u-field);
+}
+.gb-item .reply b {
+  color: var(--tb-navy) !important;
+}
+.gb-item .reply > span {
+  float: right;
+  margin-top: -2px;
+}
+
+/* 글 사이 구분선 = 파인 홈 */
+.gb-item {
+  border-bottom: 1px solid var(--tb-edge) !important;
+  box-shadow: 0 1px 0 #fff;
+}
+.gb-item:last-child {
+  border-bottom: none !important;
+  box-shadow: none;
+}
