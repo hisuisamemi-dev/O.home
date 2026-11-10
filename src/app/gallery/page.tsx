@@ -15,6 +15,7 @@ import { EditableDesc, PageTitle } from '@/components/ui/PageText';
 import { useMainStore } from '@/lib/mainStore';
 import { useCardSort, mergeOrder } from '@/lib/cardSort';
 import { useMenuSettings, canGalleryWrite } from '@/lib/menuStore';
+import { useBoardSettings, galleryCatsOf, DEFAULT_GALLERY_CATS } from '@/lib/boardStore';
 
 const FOLD_LABEL = { spoiler: '스포일러', adult: '수위 주의' };
 
@@ -36,6 +37,11 @@ function BackupPageInner() {
     if (menuLoaded && !viewInit) { setView(menuSet.backupView); setViewInit(true); }
   }, [menuLoaded, viewInit, menuSet.backupView]);
   const [q, setQ] = useState('');
+  // 말머리 필터 — 전체 또는 말머리 하나만 골라 보기
+  const [cat, setCat] = useState('전체');
+  const { st: boardSet } = useBoardSettings();
+  const secCats = galleryCatsOf(boardSet, sec.id);
+  const catList = (secCats.length ? secCats : DEFAULT_GALLERY_CATS).map(c => c.label);
   const [unveiled, setUnveiled] = useState<Record<string, boolean>>({});
   /* 우클릭 → 썸네일 수정 (v2.0 사용자 요청) — 리스트에서 바로 대표 이미지 크롭을 고친다.
      수정 화면까지 안 가도 되게. 관리자와 글쓴이만, 이미지가 있는 글만 */
@@ -56,6 +62,7 @@ function BackupPageInner() {
 
   const visible = posts
     .filter(p => isAdmin || p.visibility === 'public' || (p.visibility === 'member' && user))
+    .filter(p => cat === '전체' || p.category === cat)
     .filter(p => !q || p.title.includes(q) || p.category.includes(q)
       || (p.tags ?? []).some(t => t.toLowerCase().includes(q.toLowerCase())));   // 태그 검색 (v2.0)
 
@@ -70,7 +77,7 @@ function BackupPageInner() {
   const cur = Math.min(page, pages);      // 검색·보기 전환으로 줄면 마지막 장으로 당긴다
   const start = (cur - 1) * PER;
   const paged = visible.slice(start, start + PER);
-  useEffect(() => { setPage(1); }, [q, view]);   // 검색어·보기를 바꾸면 첫 장부터
+  useEffect(() => { setPage(1); }, [q, view, cat]);   // 검색어·보기를 바꾸면 첫 장부터
 
   const count = (p: BackupPost) => Math.max(p.images.length, p.phList.length);
   const meta = (p: BackupPost) =>
@@ -94,6 +101,13 @@ function BackupPageInner() {
             <button className="btn btn-dark" onClick={() => router.push('/gallery/write' + secQuery('gallery', sec.id))}>✎ WRITE</button>
           )}
         </div>
+      </div>
+
+      {/* 말머리 필터 버튼 */}
+      <div className="seg cat-seg" style={{ marginBottom: 14, flexWrap: 'wrap' }}>
+        {['전체', ...catList].map(c => (
+          <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c}</button>
+        ))}
       </div>
 
       {/* 갤러리/리스트 모두 렌더해 두고 display로만 전환 (v1.9) —
