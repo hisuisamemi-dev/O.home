@@ -108,8 +108,8 @@ function BackupPageInner() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <SearchBar onSearch={setQ} />
           <div className="seg">
-            <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>갤러리</button>
-            <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>리스트</button>
+            <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>▦</button>
+            <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>☰</button>
           </div>
         </div>
       </div>
