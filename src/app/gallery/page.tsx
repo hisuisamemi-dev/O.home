@@ -89,11 +89,8 @@ function BackupPageInner() {
         <PageTitle>{sec.id === 'main' ? 'GALLERY' : sec.name}</PageTitle>
         <EditableDesc k="backup-desc" def="로그형(웹툰 스크롤) / 단일형(좌우 넘김) · 리스트/갤러리 보기 전환" />
       </div>
+      {/* 윗줄 — 검색 · WRITE (오른쪽) */}
       <div className="toolrow">
-        <div className="seg">
-          <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>갤러리</button>
-          <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>리스트</button>
-        </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <SearchBar onSearch={setQ} />
           {/* 글쓰기 권한 (v2.0 사용자 요청) — 메뉴 관리에서 갤러리별로 · 멤버 선택으로 좁힐 수 있다 */}
@@ -103,11 +100,17 @@ function BackupPageInner() {
         </div>
       </div>
 
-      {/* 말머리 필터 버튼 */}
-      <div className="seg cat-seg" style={{ marginBottom: 14, flexWrap: 'wrap' }}>
-        {['전체', ...catList].map(c => (
-          <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c}</button>
-        ))}
+      {/* 아랫줄 — 말머리 필터(왼쪽) · 갤러리/리스트 보기 전환(오른쪽, WRITE 밑) */}
+      <div className="toolrow">
+        <div className="seg cat-seg" style={{ flexWrap: 'wrap' }}>
+          {['전체', ...catList].map(c => (
+            <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c}</button>
+          ))}
+        </div>
+        <div className="seg">
+          <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>갤러리</button>
+          <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>리스트</button>
+        </div>
       </div>
 
       {/* 갤러리/리스트 모두 렌더해 두고 display로만 전환 (v1.9) —
