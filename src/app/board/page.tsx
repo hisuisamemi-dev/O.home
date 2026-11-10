@@ -88,7 +88,7 @@ function BoardInner() {
       <div className="toolrow">
         <div className="seg">
           {['전체', '공지', ...board.cats.map(x => x.label)].map(c => (
-            <button key={c} className={cat === c ? 'on' : ''} onClick={() => { setCat(c); setPage(1); }}>{c}</button>
+                      <button key={c} className={cat === c ? 'on' : ''} onClick={() => { setCat(c); setPage(1); }}>{c === '전체' ? 'ALL' : c}</button>
           ))}
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
