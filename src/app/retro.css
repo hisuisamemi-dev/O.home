@@ -1439,3 +1439,21 @@ html,
   border-bottom: none !important;
   box-shadow: none;
 }
+
+
+
+/* =========================================================
+   뱃지 (공지 · 비밀 · 접힘 · 로그 · 단일 등) = 각진 윈도우 딱지
+   - 색은 환경설정 > 뱃지에서 정한 값을 그대로 씁니다
+   - 이 코드는 둥근 알약 모양 → 각진 딱지 + 입체감으로 모양만 바꿉니다
+   ========================================================= */
+span[style*="border-radius: 999px"][style*="font-weight: 700"][style*="white-space: nowrap"] {
+  border-radius: 0 !important;
+  padding: 3px 8px 2px !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.45),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.25),
+    1px 1px 0 rgba(0, 0, 0, 0.35);
+  font-family: var(--r-font, var(--sans)) !important;
+  letter-spacing: 0.03em !important;
+}
