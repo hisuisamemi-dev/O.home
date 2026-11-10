@@ -89,27 +89,28 @@ function BackupPageInner() {
         <PageTitle>{sec.id === 'main' ? 'GALLERY' : sec.name}</PageTitle>
         <EditableDesc k="backup-desc" def="로그형(웹툰 스크롤) / 단일형(좌우 넘김) · 리스트/갤러리 보기 전환" />
       </div>
-      {/* 윗줄 — 검색 · WRITE (오른쪽) */}
-      <div className="toolrow">
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <SearchBar onSearch={setQ} />
-          {/* 글쓰기 권한 (v2.0 사용자 요청) — 메뉴 관리에서 갤러리별로 · 멤버 선택으로 좁힐 수 있다 */}
-          {canGalleryWrite(menuSet, sec.id, { loggedIn: !!user, isAdmin, id: user?.id }) && (
-            <button className="btn btn-dark" onClick={() => router.push('/gallery/write' + secQuery('gallery', sec.id))}>✎ WRITE</button>
-          )}
-        </div>
-      </div>
 
-      {/* 아랫줄 — 말머리 필터(왼쪽) · 갤러리/리스트 보기 전환(오른쪽, WRITE 밑) */}
+      {/* 윗줄 — WRITE (오른쪽) · 글쓰기 권한이 없는 방문자에게는 줄 자체가 안 보임 */}
+      {/* 글쓰기 권한 (v2.0 사용자 요청) — 메뉴 관리에서 갤러리별로 · 멤버 선택으로 좁힐 수 있다 */}
+      {canGalleryWrite(menuSet, sec.id, { loggedIn: !!user, isAdmin, id: user?.id }) && (
+        <div className="toolrow">
+          <button className="btn btn-dark" onClick={() => router.push('/gallery/write' + secQuery('gallery', sec.id))}>✎ WRITE</button>
+        </div>
+      )}
+
+      {/* 아랫줄 — 말머리 필터(왼쪽) · 검색 + 갤러리/리스트 보기 전환(오른쪽, WRITE 밑) */}
       <div className="toolrow">
         <div className="seg cat-seg" style={{ flexWrap: 'wrap' }}>
           {['전체', ...catList].map(c => (
             <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c}</button>
           ))}
         </div>
-        <div className="seg">
-          <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>갤러리</button>
-          <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>리스트</button>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <SearchBar onSearch={setQ} />
+          <div className="seg">
+            <button className={view === 'gal' ? 'on' : ''} onClick={() => setView('gal')}>갤러리</button>
+            <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')}>리스트</button>
+          </div>
         </div>
       </div>
 
