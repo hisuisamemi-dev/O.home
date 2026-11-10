@@ -117,7 +117,7 @@ function DiaryPageInner() {
       <div className="toolrow" style={{ marginBottom: 16 }}>
         <div className="tag-row">
           <div className={`tag ${fMood === 'all' ? 'on' : ''}`} onClick={() => { setFMood('all'); setPage(1); }}>
-            전체 <small>{cnt('all')}</small>
+            ALL <small>{cnt('all')}</small>
           </div>
           {moods.map(m => (
             <div key={m.id} className={`tag ${fMood === m.id ? 'on' : ''}`} onClick={() => { setFMood(m.id); setPage(1); }}>
