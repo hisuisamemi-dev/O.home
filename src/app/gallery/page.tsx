@@ -102,7 +102,7 @@ function BackupPageInner() {
       <div className="toolrow">
         <div className="seg cat-seg" style={{ flexWrap: 'wrap' }}>
           {['전체', ...catList].map(c => (
-            <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c}</button>
+                <button key={c} className={cat === c ? 'on' : ''} onClick={() => setCat(c)}>{c === '전체' ? 'ALL' : c}</button>
           ))}
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
