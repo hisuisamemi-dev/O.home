@@ -1630,3 +1630,22 @@ body::before {
       var(--w-win, var(--tb-win));
   }
 }
+
+
+/* =========================================================
+   모바일 = 바탕화면 없이 안쪽 흰 화면만
+   - 맨 아래에 두세요 / PC는 그대로
+   ========================================================= */
+@media (max-width: 620px) {
+  /* 격자 · 배경 이미지 · 그라데이션 끄기 */
+  body {
+    background: var(--win-inside, #fff) !important;
+  }
+  body::before {
+    background: var(--win-inside, #fff) !important;
+  }
+  /* 본문 칸도 흰색 */
+  #appMain {
+    background: var(--win-inside, #fff) !important;
+  }
+}
