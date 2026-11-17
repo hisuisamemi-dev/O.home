@@ -1649,3 +1649,11 @@ body::before {
     background: var(--win-inside, #fff) !important;
   }
 }
+
+
+/* =========================================================
+   메뉴 페이지 제목 아래 설명 문구 숨기기
+   ========================================================= */
+.page-head p.editable {
+  display: none !important;
+}
