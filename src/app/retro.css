@@ -1486,3 +1486,70 @@ span[style*="border-radius: 999px"][style*="font-weight: 700"][style*="white-spa
 .topbar .brand small {
   display: none;
 }
+
+
+/* =========================================================
+   상단 메뉴 = 윈도우 98 메뉴 막대 (File Edit View … 느낌)
+   - 테두리 없는 글자 메뉴 · 첫 글자에 밑줄
+   - 마우스를 올리면 살짝 튀어나오고, 하위 메뉴가 열린 동안은 남색
+   - 상단바 · 로고 버튼 코드보다 아래에 두세요
+   ========================================================= */
+.topbar .brand,
+.topbar .gnb > button,
+.topbar .gnb > .grp > button,
+.topbar .gnb a.gnb-link {
+  padding: 3px 9px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--tb-ink) !important;
+  font-weight: 400 !important;
+}
+.topbar .gnb {
+  gap: 0 !important;
+}
+/* 로고 칸도 메뉴 막대의 첫 항목처럼 */
+.topbar .brand {
+  margin-right: -22px;
+}
+
+/* 첫 글자 밑줄 (Alt 단축키 표시처럼) */
+.topbar .gnb > button::first-letter,
+.topbar .gnb > .grp > button::first-letter {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 하위 메뉴 표시 ▾ 숨기기 — 진짜 메뉴 막대에는 화살표가 없어요 */
+.topbar .gnb > .grp > button::after {
+  content: none !important;
+}
+
+/* 마우스를 올리면 = 얇게 튀어나온 모양 */
+.topbar .brand:hover,
+.topbar .gnb > button:hover,
+.topbar .gnb > .grp > button:hover,
+.topbar .gnb a.gnb-link:hover {
+  border-color: #fff var(--tb-edge) var(--tb-edge) #fff !important;
+  background: transparent !important;
+}
+/* 하위 메뉴가 열려 있는 동안 · 누르는 순간 = 남색 */
+.topbar .gnb > .grp:hover > button,
+.topbar .gnb > .grp.open > button,
+.topbar .gnb > button:active,
+.topbar .brand:active {
+  color: #fff !important;
+  background: var(--tb-navy) !important;
+  border-color: var(--tb-navy) !important;
+}
+/* 지금 보고 있는 메뉴 = 살짝 들어간 모양 */
+.topbar .gnb > button.on {
+  border-color: var(--tb-edge) #fff #fff var(--tb-edge) !important;
+  background: transparent !important;
+  font-weight: 400 !important;
+}
+
+/* 펼친 하위 메뉴는 메뉴 막대에 딱 붙게 */
+.topbar .grp .sub {
+  top: calc(100% + 1px) !important;
+}
