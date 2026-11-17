@@ -1553,3 +1553,27 @@ span[style*="border-radius: 999px"][style*="font-weight: 700"][style*="white-spa
 .topbar .grp .sub {
   top: calc(100% + 1px) !important;
 }
+
+
+
+/* 메뉴 막대 — HOME에도 첫 글자 밑줄 · 왼쪽 끝을 제목줄 글자에 맞추기 */
+.topbar {
+  padding-left: 0 !important;
+}
+.topbar::before {
+  padding-left: 10px !important;   /* 제목줄 글자 시작 = 메뉴 글자 시작 */
+}
+.topbar .brand {
+  display: inline-block !important;   /* 첫 글자 밑줄이 먹으려면 필요 */
+  margin-left: 0 !important;
+  /* 글씨도 옆 메뉴와 똑같이 */
+  font-family: var(--r-font, var(--font-menu, var(--sans))) !important;
+  font-size: calc(12.5px * var(--fs-menu, 1)) !important;
+  letter-spacing: 0.02em !important;
+  line-height: normal;
+}
+.topbar .brand::first-letter {
+  font-size: 1em !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
