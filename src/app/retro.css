@@ -1683,3 +1683,64 @@ body::before {
     display: none;
   }
 }
+
+
+/* =========================================================
+   제목줄 오른쪽 _ □ × = 입체 버튼 (누르면 쏙 들어감 · 기능은 없음)
+   - TopBar.tsx에 버튼 3개를 넣은 뒤 이 블록을 맨 아래에 붙이세요
+   ========================================================= */
+/* 예전 글자 장식은 끄기 */
+.topbar::after {
+  content: none !important;
+  display: none !important;
+}
+
+.topbar .win-ctl {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* 버튼 = 튀어나온 회색 네모 (흰 윗면 · 검은 아랫면 2겹) */
+.topbar .win-ctl button {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: var(--tb-win) !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+  box-shadow:
+    inset -1px -1px 0 #0a0a0a,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 var(--tb-edge),
+    inset 2px 2px 0 #dfe1e6 !important;
+  image-rendering: pixelated;
+  cursor: var(--cur-pointer, pointer);
+}
+/* × 앞에만 살짝 띄우기 (진짜 윈도우처럼) */
+.topbar .win-ctl .wc-cls {
+  margin-left: 2px;
+}
+
+/* 아이콘 */
+.topbar .win-ctl .wc-min { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M0 5h6v1h-6zM0 6h6v1h-6z' fill='%23000'/%3E%3C/svg%3E") !important; background-position: 4px 4px !important; }
+.topbar .win-ctl .wc-max { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h9v1h-9zM0 1h9v1h-9zM0 2h1v1h-1zM8 2h1v1h-1zM0 3h1v1h-1zM8 3h1v1h-1zM0 4h1v1h-1zM8 4h1v1h-1zM0 5h1v1h-1zM8 5h1v1h-1zM0 6h1v1h-1zM8 6h1v1h-1zM0 7h1v1h-1zM8 7h1v1h-1zM0 8h9v1h-9z' fill='%23000'/%3E%3C/svg%3E") !important; background-position: 3px 2px !important; }
+.topbar .win-ctl .wc-cls { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h2v1h-2zM6 0h2v1h-2zM1 1h2v1h-2zM5 1h2v1h-2zM2 2h4v1h-4zM3 3h2v1h-2zM2 4h4v1h-4zM1 5h2v1h-2zM5 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2z' fill='%23000'/%3E%3C/svg%3E") !important; background-position: 4px 3px !important; }
+
+/* 누르는 동안 = 쏙 들어간 버튼 + 아이콘 1px 이동 */
+.topbar .win-ctl button:active {
+  box-shadow:
+    inset 1px 1px 0 #0a0a0a,
+    inset -1px -1px 0 #fff,
+    inset 2px 2px 0 var(--tb-edge),
+    inset -2px -2px 0 #dfe1e6 !important;
+}
+.topbar .win-ctl .wc-min:active { background-position: 5px 5px !important; }
+.topbar .win-ctl .wc-max:active { background-position: 4px 3px !important; }
+.topbar .win-ctl .wc-cls:active { background-position: 5px 4px !important; }
