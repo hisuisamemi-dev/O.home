@@ -302,6 +302,12 @@ export function TopBar() {
       ) : (
         <button className="login-link" onClick={() => nav('/login')}>로그인</button>
       )}
+          {/* 제목줄 오른쪽 _ □ × — 눌리는 모양만 (기능 없음) */}
+      <div className="win-ctl" aria-hidden="true">
+        <button type="button" tabIndex={-1} className="wc-min" />
+        <button type="button" tabIndex={-1} className="wc-max" />
+        <button type="button" tabIndex={-1} className="wc-cls" />
+      </div>
     </header>
   );
 }
