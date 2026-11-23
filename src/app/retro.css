@@ -1744,3 +1744,53 @@ body::before {
 .topbar .win-ctl .wc-min:active { background-position: 5px 5px !important; }
 .topbar .win-ctl .wc-max:active { background-position: 4px 3px !important; }
 .topbar .win-ctl .wc-cls:active { background-position: 5px 4px !important; }
+
+
+/* =========================================================
+   손님 닉네임 칸 (방명록 · 댓글 위 「GUEST + 닉네임」 줄) = 윈도우 98
+   - 공통 UI 블록(--u-…)보다 아래에 두세요
+   ========================================================= */
+/* 바깥 둥근 상자 → 회색 창 안의 한 줄 */
+.guest-id {
+  gap: 6px !important;
+  padding: 4px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: var(--tb-win) !important;
+  box-shadow: var(--u-bevel-up) !important;
+}
+
+/* GUEST = 남색 이름표 (창 제목줄 색) */
+.guest-id .gi-tag {
+  padding: 0 10px !important;
+  height: 24px;
+  line-height: 24px;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: var(--r-font, monospace) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--tb-navy), var(--tb-blue)) !important;
+}
+
+/* 닉네임 = 오목한 흰 입력칸 */
+.guest-id input {
+  height: 24px;
+  padding: 0 8px !important;
+  border-radius: 0 !important;
+  font-family: var(--r-font, inherit) !important;
+  font-size: 12px !important;
+  color: var(--tb-ink) !important;
+  background: #fff !important;
+  box-shadow: var(--u-field) !important;
+}
+.guest-id input::placeholder {
+  color: var(--tb-edge) !important;
+  opacity: 0.8;
+}
+/* 글자 쓰는 중 = 칸 안쪽에 점선 (윈도우 포커스 표시) */
+.guest-id input:focus {
+  outline: 1px dotted var(--tb-ink) !important;
+  outline-offset: -4px;
+}
