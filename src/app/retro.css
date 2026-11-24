@@ -1794,3 +1794,14 @@ body::before {
   outline: 1px dotted var(--tb-ink) !important;
   outline-offset: -4px;
 }
+
+
+/* 편집모드 그리드 — 밝은 바탕에서도 보이게 */
+.main-grid.gridlines {
+  background-image:
+    repeating-linear-gradient(to right, rgba(13, 42, 138, 0.10) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(to bottom, rgba(13, 42, 138, 0.10) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(to right, rgba(13, 42, 138, 0.18) 0 1px, transparent 1px 100px),
+    repeating-linear-gradient(to bottom, rgba(13, 42, 138, 0.18) 0 1px, transparent 1px 100px) !important;
+  border-radius: 0 !important;
+}
